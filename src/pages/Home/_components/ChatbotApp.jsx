@@ -1,5 +1,5 @@
 import { useState } from "react"
-const { Configuration, OpenAIApi } = require("openai");
+import { Configuration, OpenAIApi }from "openai";
 
 const ChatbotApp = () => {
     const configuration = new Configuration({
@@ -11,12 +11,13 @@ const ChatbotApp = () => {
     const [apiResponse, setApiResponse] = useState("");
     const [loading, setLoading] = useState(false);
 
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
         try {
             const result = await openai.createCompletion({
-                model: "text-davinci-003",
+                model: "gpt-3.5-turbo",
                 prompt: prompt,
                 temperature: 0.5,
                 max_tokens: 4000,
